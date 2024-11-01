@@ -31,7 +31,7 @@ jobs:
         run: |
           mkdir build
           cd build
-          cmake .. -DDEV_MODE=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake -DSFML_DIR=${{ github.workspace }}/vcpkg/installed/x64-windows/share/SFML -DBUILD_LIB=ON
+          cmake .. -DDEV_MODE=OFF -DBUILD_SHARED_LIBS=OFF -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake -DSFML_DIR=${{ github.workspace }}/vcpkg/installed/x64-windows/share/SFML -DBUILD_LIB=ON
 
       - name: Build the project
         run: |
