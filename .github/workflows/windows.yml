@@ -38,7 +38,29 @@ jobs:
           cd build
           cmake --build . --config Debug
 
-      - name: Debug directory structure
+      - name: Copy header files
         run: |
-          Write-Host "Current directory structure:"
-          Get-ChildItem -Path "${{ github.workspace }}" -Recurse
+          # Create all necessary directories
+          New-Item -ItemType Directory -Force -Path "${{ github.workspace }}\bin\Debug\include\GUI\components"
+          New-Item -ItemType Directory -Force -Path "${{ github.workspace }}\bin\Debug\include\GUI\form"
+          New-Item -ItemType Directory -Force -Path "${{ github.workspace }}\bin\Debug\include\XML"
+      
+          if (Test-Path "${{ github.workspace }}\GUI\*.hpp") {
+              Copy-Item "${{ github.workspace }}\GUI\*.hpp" -Destination "${{ github.workspace }}\bin\Debug\include\GUI\" -Force
+          }
+          
+          if (Test-Path "${{ github.workspace }}\GUI\components\*.hpp") {
+              Copy-Item "${{ github.workspace }}\GUI\components\*.hpp" -Destination "${{ github.workspace }}\bin\Debug\include\GUI\components\" -Force
+          }
+          
+          if (Test-Path "${{ github.workspace }}\GUI\form\*.hpp") {
+              Copy-Item "${{ github.workspace }}\GUI\form\*.hpp" -Destination "${{ github.workspace }}\bin\Debug\include\GUI\form\" -Force
+          }
+          
+          if (Test-Path "${{ github.workspace }}\XML\*.hpp") {
+              Copy-Item "${{ github.workspace }}\XML\*.hpp" -Destination "${{ github.workspace }}\bin\Debug\include\XML\" -Force
+          }
+          
+          if (Test-Path "${{ github.workspace }}\XML\*.h") {
+              Copy-Item "${{ github.workspace }}\XML\*.h" -Destination "${{ github.workspace }}\bin\Debug\include\XML\" -Force
+          }
