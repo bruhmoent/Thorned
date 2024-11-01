@@ -31,19 +31,19 @@ jobs:
         run: |
           mkdir build
           cd build
-          cmake .. -DDEV_MODE=ON -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake -DSFML_DIR=${{ github.workspace }}/vcpkg/installed/x64-windows/share/SFML
+          cmake .. -DDEV_MODE=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake -DSFML_DIR=${{ github.workspace }}/vcpkg/installed/x64-windows/share/SFML -DBUILD_LIB=ON
 
       - name: Build the project
         run: |
           cd build
           cmake --build . --config Debug
 
-      - name: Copy header files
+      - name: Copy header files and library
         run: |
-          # Create all necessary directories
           New-Item -ItemType Directory -Force -Path "${{ github.workspace }}\bin\Debug\include\GUI\components"
           New-Item -ItemType Directory -Force -Path "${{ github.workspace }}\bin\Debug\include\GUI\form"
           New-Item -ItemType Directory -Force -Path "${{ github.workspace }}\bin\Debug\include\XML"
+          New-Item -ItemType Directory -Force -Path "${{ github.workspace }}\bin\Debug\lib"
       
           if (Test-Path "${{ github.workspace }}\GUI\*.hpp") {
               Copy-Item "${{ github.workspace }}\GUI\*.hpp" -Destination "${{ github.workspace }}\bin\Debug\include\GUI\" -Force
@@ -64,3 +64,10 @@ jobs:
           if (Test-Path "${{ github.workspace }}\XML\*.h") {
               Copy-Item "${{ github.workspace }}\XML\*.h" -Destination "${{ github.workspace }}\bin\Debug\include\XML\" -Force
           }
+
+          if (Test-Path "${{ github.workspace }}\build\Debug\*.lib") {
+              Copy-Item "${{ github.workspace }}\build\Debug\*.lib" -Destination "${{ github.workspace }}\bin\Debug\lib\" -Force
+          }
+
+          Write-Host "Files in destination directories:"
+          Get-ChildItem -Path "${{ github.workspace }}\bin\Debug" -Recurse
