@@ -73,7 +73,7 @@ jobs:
           Get-ChildItem -Path "${{ github.workspace }}\bin\Debug" -Recurse
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: ThorneLib-Debug
           path: ${{ github.workspace }}/bin/Debug/**/*
