@@ -40,10 +40,11 @@ jobs:
 
       - name: Copy header files
         run: |
-          mkdir -p "${{ github.workspace }}/bin/Debug/include/GUI"
-          mkdir -p "${{ github.workspace }}/bin/Debug/include/XML"
-          Copy-Item -Path "${{ github.workspace }}/GUI/*.hpp" -Destination "${{ github.workspace }}/bin/Debug/include/GUI/" -Recurse -Force
-          Copy-Item -Path "${{ github.workspace }}/GUI/components/*.hpp" -Destination "${{ github.workspace }}/bin/Debug/include/GUI/components/" -Recurse -Force
-          Copy-Item -Path "${{ github.workspace }}/GUI/form/*.hpp" -Destination "${{ github.workspace }}/bin/Debug/include/GUI/form/" -Recurse -Force
-          Copy-Item -Path "${{ github.workspace }}/XML/*.hpp" -Destination "${{ github.workspace }}/bin/Debug/include/XML/" -Recurse -Force
-          Copy-Item -Path "${{ github.workspace }}/XML/*.h" -Destination "${{ github.workspace }}/bin/Debug/include/XML/" -Recurse -Force
+          mkdir -p "${{ github.workspace }}\bin\Debug\include\GUI"
+          mkdir -p "${{ github.workspace }}\bin\Debug\include\XML"
+              
+          Get-ChildItem -Path "${{ github.workspace }}\GUI\*.hpp" | Copy-Item -Destination "${{ github.workspace }}\bin\Debug\include\GUI\" -Force
+          Get-ChildItem -Path "${{ github.workspace }}\GUI\components\*.hpp" | Copy-Item -Destination "${{ github.workspace }}\bin\Debug\include\GUI\components\" -Force
+          Get-ChildItem -Path "${{ github.workspace }}\GUI\form\*.hpp" | Copy-Item -Destination "${{ github.workspace }}\bin\Debug\include\GUI\form\" -Force
+          Get-ChildItem -Path "${{ github.workspace }}\XML\*.hpp" | Copy-Item -Destination "${{ github.workspace }}\bin\Debug\include\XML\" -Force
+          Get-ChildItem -Path "${{ github.workspace }}\XML\*.h" | Copy-Item -Destination "${{ github.workspace }}\bin\Debug\include\XML\" -Force
