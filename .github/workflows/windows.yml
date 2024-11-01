@@ -42,8 +42,8 @@ jobs:
         run: |
           mkdir -p "${{ github.workspace }}/bin/Debug/include/GUI"
           mkdir -p "${{ github.workspace }}/bin/Debug/include/XML"
-          copy /Y "${{ github.workspace }}/GUI/*.hpp" "${{ github.workspace }}/bin/Debug/include/GUI/"
-          copy /Y "${{ github.workspace }}/GUI/components/*.hpp" "${{ github.workspace }}/bin/Debug/include/GUI/components/"
-          copy /Y "${{ github.workspace }}/GUI/form/*.hpp" "${{ github.workspace }}/bin/Debug/include/GUI/form/"
-          copy /Y "${{ github.workspace }}/XML/*.hpp" "${{ github.workspace }}/bin/Debug/include/XML/"
-          copy /Y "${{ github.workspace }}/XML/*.h" "${{ github.workspace }}/bin/Debug/include/XML/"
+          Copy-Item -Path "${{ github.workspace }}/GUI/*.hpp" -Destination "${{ github.workspace }}/bin/Debug/include/GUI/" -Recurse -Force
+          Copy-Item -Path "${{ github.workspace }}/GUI/components/*.hpp" -Destination "${{ github.workspace }}/bin/Debug/include/GUI/components/" -Recurse -Force
+          Copy-Item -Path "${{ github.workspace }}/GUI/form/*.hpp" -Destination "${{ github.workspace }}/bin/Debug/include/GUI/form/" -Recurse -Force
+          Copy-Item -Path "${{ github.workspace }}/XML/*.hpp" -Destination "${{ github.workspace }}/bin/Debug/include/XML/" -Recurse -Force
+          Copy-Item -Path "${{ github.workspace }}/XML/*.h" -Destination "${{ github.workspace }}/bin/Debug/include/XML/" -Recurse -Force
