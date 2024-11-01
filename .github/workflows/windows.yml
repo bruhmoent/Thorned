@@ -38,13 +38,7 @@ jobs:
           cd build
           cmake --build . --config Debug
 
-      - name: Copy header files
+      - name: Debug directory structure
         run: |
-          mkdir -p "${{ github.workspace }}\bin\Debug\include\GUI"
-          mkdir -p "${{ github.workspace }}\bin\Debug\include\XML"
-              
-          Get-ChildItem -Path "${{ github.workspace }}\GUI\*.hpp" | Copy-Item -Destination "${{ github.workspace }}\bin\Debug\include\GUI\" -Force
-          Get-ChildItem -Path "${{ github.workspace }}\GUI\components\*.hpp" | Copy-Item -Destination "${{ github.workspace }}\bin\Debug\include\GUI\components\" -Force
-          Get-ChildItem -Path "${{ github.workspace }}\GUI\form\*.hpp" | Copy-Item -Destination "${{ github.workspace }}\bin\Debug\include\GUI\form\" -Force
-          Get-ChildItem -Path "${{ github.workspace }}\XML\*.hpp" | Copy-Item -Destination "${{ github.workspace }}\bin\Debug\include\XML\" -Force
-          Get-ChildItem -Path "${{ github.workspace }}\XML\*.h" | Copy-Item -Destination "${{ github.workspace }}\bin\Debug\include\XML\" -Force
+          Write-Host "Current directory structure:"
+          Get-ChildItem -Path "${{ github.workspace }}" -Recurse
