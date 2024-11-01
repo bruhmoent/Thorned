@@ -14,10 +14,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up vcpkg
-      uses: microsoft/vcpkg@v0.0.1
-      with:
-        vcpkgArguments: '--triplet x64-windows'
+    - name: Install vcpkg
+      run: |
+        git clone https://github.com/microsoft/vcpkg.git
+        cd vcpkg
+        .\bootstrap-vcpkg.bat
 
     - name: Install SFML
       run: |
