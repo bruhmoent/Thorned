@@ -53,8 +53,8 @@ void Container::set_position(const sf::Vector2f& position) {
 
 void Container::set_size(const sf::Vector2f& size) {
 	m_size = size;
-	if(m_shape)
-	{ 
+
+	if(m_shape){ 
 		m_shape->setSize(size);
 	}
 

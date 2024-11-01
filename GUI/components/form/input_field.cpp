@@ -25,7 +25,7 @@ InputField::InputField(const std::string& identifier, const sf::Vector2f& positi
 }
 
 void InputField::render(sf::RenderTarget& target) {
-	if (m_shape != nullptr) {
+	if (m_shape) {
 		target.draw(*m_shape);
 	}
 
@@ -36,7 +36,7 @@ void InputField::render(sf::RenderTarget& target) {
 		target.draw(*m_placeholder_text);
 	}
 	else {
-		if (m_text != nullptr) {
+		if (m_text) {
 			target.draw(*m_text);
 		}
 	}
