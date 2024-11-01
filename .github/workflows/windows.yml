@@ -65,8 +65,8 @@ jobs:
               Copy-Item "${{ github.workspace }}\XML\*.h" -Destination "${{ github.workspace }}\bin\Debug\include\XML\" -Force
           }
 
-          if (Test-Path "${{ github.workspace }}\build\Debug\*.lib") {
-              Copy-Item "${{ github.workspace }}\build\Debug\*.lib" -Destination "${{ github.workspace }}\bin\Debug\lib\" -Force
+          if (Test-Path "${{ github.workspace }}\lib\Debug\*.lib") {
+              Copy-Item "${{ github.workspace }}\lib\Debug\*.lib" -Destination "${{ github.workspace }}\bin\Debug\lib\" -Force
           }
 
           Write-Host "Files in destination directories:"
