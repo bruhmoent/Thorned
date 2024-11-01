@@ -1,7 +1,7 @@
 #include "label.hpp"
 
 Label::Label(const std::string& identifier, const sf::Font& font, const std::string& text,
-	unsigned int font_size, sf::Color color)
+	unsigned font_size, sf::Color color)
 	: Component(identifier), m_text(std::make_shared<sf::Text>(text, font, font_size)), m_color(color) {
 	m_text->setFillColor(color);
 	m_size = calculate_text_bounds();

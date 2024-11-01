@@ -6,7 +6,7 @@
 class InputField : public Component {
 public:
 	InputField(const std::string& identifier, const sf::Vector2f& position, const sf::Vector2f& size,
-		const sf::Font& font, unsigned int font_size, const sf::Color& color = sf::Color::White,
+		const sf::Font& font, unsigned font_size, const sf::Color& color = sf::Color::White,
 		const sf::Color& text_color = sf::Color::Black, const sf::Color& cursor_color = sf::Color::Black, const std::string& placeholder_text = "",
 		const std::string& text = "", const float screen_size_x = 800.f, const float screen_size_y = 600.f);
 
@@ -29,10 +29,10 @@ public:
 	sf::Color get_cursor_color() const;
 	void set_font(const sf::Font& font);
 	const sf::Font& get_font() const;
-	void set_font_size(unsigned int font_size);
-	unsigned int get_font_size() const;
-	void set_cursor_position(unsigned int cursor_position);
-	unsigned int get_cursor_position() const;
+	void set_font_size(unsigned font_size);
+	unsigned get_font_size() const;
+	void set_cursor_position(unsigned cursor_position);
+	unsigned get_cursor_position() const;
 	void set_is_focused(bool is_focused);
 	bool get_is_focused() const;
 	std::shared_ptr<sf::Text> get_label() const;
@@ -61,10 +61,10 @@ private:
 	sf::Color m_text_color;
 	sf::Color m_cursor_color;
 	sf::Font m_font;
-	unsigned int m_font_size;
+	unsigned m_font_size;
 
 	std::string m_text_string;
-	unsigned int m_cursor_position = 0;
+	unsigned m_cursor_position = 0;
 	bool m_is_focused = false;
 	bool m_cursor_visible = true;
 	sf::Clock m_cursor_timer; 

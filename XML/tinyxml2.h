@@ -302,7 +302,7 @@ private:
 		if ( cap > _allocated ) {
 			TIXMLASSERT( cap <= INT_MAX / 2 );
 			const int newAllocated = cap * 2;
-			T* newMem = new T[static_cast<unsigned int>(newAllocated)];
+			T* newMem = new T[static_cast<unsigned>(newAllocated)];
 			TIXMLASSERT( newAllocated >= _size );
 			memcpy( newMem, _mem, sizeof(T)*static_cast<size_t>(_size) );	// warning: not using constructors, only works for PODs
 			if ( _mem != _pool ) {
@@ -1180,7 +1180,7 @@ public:
 		return i;
 	}
 
-	/// Query as an unsigned integer. See IntValue()
+	/// Query as an unsignedeger. See IntValue()
 	unsigned UnsignedValue() const			{
 		unsigned i=0;
 		QueryUnsignedValue( &i );
@@ -1211,7 +1211,7 @@ public:
 	*/
 	XMLError QueryIntValue( int* value ) const;
 	/// See QueryIntValue
-	XMLError QueryUnsignedValue( unsigned int* value ) const;
+	XMLError QueryUnsignedValue( unsigned* value ) const;
 	/// See QueryIntValue
 	XMLError QueryInt64Value(int64_t* value) const;
 	/// See QueryIntValue
@@ -1352,7 +1352,7 @@ public:
 	}
 
 	/// See QueryIntAttribute()
-	XMLError QueryUnsignedAttribute( const char* name, unsigned int* value ) const	{
+	XMLError QueryUnsignedAttribute( const char* name, unsigned* value ) const	{
 		const XMLAttribute* a = FindAttribute( name );
 		if ( !a ) {
 			return XML_NO_ATTRIBUTE;
@@ -1436,7 +1436,7 @@ public:
 		return QueryIntAttribute( name, value );
 	}
 
-	XMLError QueryAttribute( const char* name, unsigned int* value ) const {
+	XMLError QueryAttribute( const char* name, unsigned* value ) const {
 		return QueryUnsignedAttribute( name, value );
 	}
 

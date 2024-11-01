@@ -502,7 +502,7 @@ const char* XMLUtil::GetCharacterRef( const char* p, char* value, int* length )
 			--q;
 
 			while ( *q != 'x' ) {
-				unsigned int digit = 0;
+				unsigned digit = 0;
 
 				if ( *q >= '0' && *q <= '9' ) {
 					digit = *q - '0';
@@ -518,7 +518,7 @@ const char* XMLUtil::GetCharacterRef( const char* p, char* value, int* length )
 				}
 				TIXMLASSERT( digit < 16 );
 				TIXMLASSERT( digit == 0 || mult <= UINT_MAX / digit );
-				const unsigned int digitScaled = mult * digit;
+				const unsigned digitScaled = mult * digit;
 				TIXMLASSERT( ucs <= ULONG_MAX - digitScaled );
 				ucs += digitScaled;
 				TIXMLASSERT( mult <= UINT_MAX / 16 );
@@ -545,10 +545,10 @@ const char* XMLUtil::GetCharacterRef( const char* p, char* value, int* length )
 
 			while ( *q != '#' ) {
 				if ( *q >= '0' && *q <= '9' ) {
-					const unsigned int digit = *q - '0';
+					const unsigned digit = *q - '0';
 					TIXMLASSERT( digit < 10 );
 					TIXMLASSERT( digit == 0 || mult <= UINT_MAX / digit );
-					const unsigned int digitScaled = mult * digit;
+					const unsigned digitScaled = mult * digit;
 					TIXMLASSERT( ucs <= ULONG_MAX - digitScaled );
 					ucs += digitScaled;
 				}
@@ -1495,7 +1495,7 @@ XMLError XMLAttribute::QueryIntValue( int* value ) const
 }
 
 
-XMLError XMLAttribute::QueryUnsignedValue( unsigned int* value ) const
+XMLError XMLAttribute::QueryUnsignedValue( unsigned* value ) const
 {
 	if ( XMLUtil::ToUnsigned( Value(), value )) {
 		return XML_SUCCESS;

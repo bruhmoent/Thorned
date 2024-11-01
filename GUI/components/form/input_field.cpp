@@ -2,7 +2,7 @@
 #include <iostream>
 
 InputField::InputField(const std::string& identifier, const sf::Vector2f& position, const sf::Vector2f& size,
-	const sf::Font& font, unsigned int font_size, const sf::Color& color,
+	const sf::Font& font, unsigned font_size, const sf::Color& color,
 	const sf::Color& text_color, const sf::Color& cursor_color, const std::string& placeholder_text,
 	const std::string& text, const float screen_size_x, const float screen_size_y)
 	: Component(identifier), m_color(color), m_text_color(text_color), m_cursor_color(cursor_color),
@@ -322,22 +322,22 @@ const sf::Font& InputField::get_font() const {
 	return m_font;
 }
 
-void InputField::set_font_size(unsigned int font_size) {
+void InputField::set_font_size(unsigned font_size) {
 	m_font_size = font_size;
 	m_text->setCharacterSize(font_size);
 	m_placeholder_text->setCharacterSize(font_size);
 }
 
-unsigned int InputField::get_font_size() const {
+unsigned InputField::get_font_size() const {
 	return m_font_size;
 }
 
-void InputField::set_cursor_position(unsigned int cursor_position) {
+void InputField::set_cursor_position(unsigned cursor_position) {
 	m_cursor_position = cursor_position;
 	update_cursor_position();
 }
 
-unsigned int InputField::get_cursor_position() const {
+unsigned InputField::get_cursor_position() const {
 	return m_cursor_position;
 }
 

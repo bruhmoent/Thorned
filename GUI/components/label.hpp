@@ -6,7 +6,7 @@
 class Label : public Component {
 public:
 	Label(const std::string& identifier, const sf::Font& font, const std::string& text,
-		unsigned int font_size, sf::Color color);
+		unsigned font_size, sf::Color color);
 
 	void render(sf::RenderTarget& target) override;
 	void update(float dt, const sf::RenderWindow& window) override;

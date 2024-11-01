@@ -83,7 +83,7 @@ std::shared_ptr<Component> Document::create_element(const std::string& tag,
 		const char* label_text = element->Attribute("label");
 		if (!label_text) label_text = "Button";
 
-		unsigned int font_size = static_cast<unsigned>(element->IntAttribute("fontSize", 24));
+		const unsigned font_size = static_cast<unsigned>(element->IntAttribute("fontSize", 24));
 
 		auto button = std::make_shared<Button>(
 			label_text,
@@ -145,8 +145,8 @@ std::shared_ptr<Component> Document::create_element(const std::string& tag,
 		const char* identifier = element->Attribute("id");
 		if (!identifier) identifier = "image";
 
-		int width = element->IntAttribute("width", 100);
-		int height = element->IntAttribute("height", 100);
+		const int width = element->IntAttribute("width", 64);
+		const int height = element->IntAttribute("height", 64);
 
 		auto image = std::make_shared<Image>(
 			identifier,
@@ -167,7 +167,7 @@ std::shared_ptr<Component> Document::create_element(const std::string& tag,
 		const char* identifier = element->Attribute("id");
 		if (!identifier) identifier = "label";
 
-		unsigned int font_size = static_cast<unsigned>(element->IntAttribute("fontSize", 24));
+		const unsigned font_size = static_cast<unsigned>(element->IntAttribute("fontSize", 24));
 		sf::Color color = parse_color(element, "color");
 
 		auto label = std::make_shared<Label>(
@@ -178,7 +178,7 @@ std::shared_ptr<Component> Document::create_element(const std::string& tag,
 			color
 		);
 
-		AnchorPoint anchor_point = parse_anchor_point(element);
+		const AnchorPoint anchor_point = parse_anchor_point(element);
 		label->set_anchor_point(anchor_point);
 
 		if (parent_container) {
@@ -190,12 +190,12 @@ std::shared_ptr<Component> Document::create_element(const std::string& tag,
 		const char* identifier = element->Attribute("id");
 		if (!identifier) identifier = "inputField";
 
-		sf::Vector2f position = parse_position(element);
-		sf::Vector2f size = parse_size(element, parent_size);
-		unsigned int font_size = static_cast<unsigned>(element->IntAttribute("fontSize", 24));
-		sf::Color color = parse_color(element, "color");
-		sf::Color text_color = parse_color(element, "textColor");
-		sf::Color cursor_color = parse_color(element, "cursorColor");
+		const sf::Vector2f position = parse_position(element);
+		const sf::Vector2f size = parse_size(element, parent_size);
+		const unsigned font_size = static_cast<unsigned>(element->IntAttribute("fontSize", 24));
+		const sf::Color color = parse_color(element, "color");
+		const sf::Color text_color = parse_color(element, "textColor");
+		const sf::Color cursor_color = parse_color(element, "cursorColor");
 		const std::string placeholder_text = element->Attribute("placeholderText") ? element->Attribute("placeholderText") : "";
 		const std::string initial_text = element->Attribute("text") ? element->Attribute("text") : "";
 

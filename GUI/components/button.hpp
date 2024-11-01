@@ -9,7 +9,7 @@ class Button : public Component {
 public:
 	Button(const std::string& identifier, const sf::Vector2f& position, const sf::Vector2f& size,
 		const sf::Color& color, const sf::Color& hover_color, const sf::Color& click_color,
-		const std::string& label_text, const sf::Font& font, unsigned int font_size,
+		const std::string& label_text, const sf::Font& font, unsigned font_size,
 		std::function<void()> on_click);
 
 	void update(float dt, const sf::RenderWindow& window) override;
