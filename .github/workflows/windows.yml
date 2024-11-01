@@ -1,0 +1,46 @@
+name: Build ThornedLibrary
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install vcpkg
+      run: |
+        git clone https://github.com/microsoft/vcpkg.git
+        cd vcpkg
+        .\bootstrap-vcpkg.bat
+
+    - name: Install SFML
+      run: |
+        .\vcpkg\vcpkg install sfml:x64-windows
+
+    - name: Configure CMake
+      run: |
+        mkdir build
+        cd build
+        cmake .. -DDEV_MODE=ON -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake
+
+    - name: Build the project
+      run: |
+        cd build
+        cmake --build . --config Debug
+
+    - name: Copy header files
+      run: |
+        mkdir -p "${{ github.workspace }}/bin/Debug/include/GUI"
+        mkdir -p "${{ github.workspace }}/bin/Debug/include/XML"
+        copy /Y "${{ github.workspace }}/GUI/*.hpp" "${{ github.workspace }}/bin/Debug/include/GUI/"
+        copy /Y "${{ github.workspace }}/GUI/components/*.hpp" "${{ github.workspace }}/bin/Debug/include/GUI/components/"
+        copy /Y "${{ github.workspace }}/GUI/form/*.hpp" "${{ github.workspace }}/bin/Debug/include/GUI/form/"
+        copy /Y "${{ github.workspace }}/XML/*.hpp" "${{ github.workspace }}/bin/Debug/include/XML/"
+        copy /Y "${{ github.workspace }}/XML/*.h" "${{ github.workspace }}/bin/Debug/include/XML/"
