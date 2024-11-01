@@ -2,7 +2,9 @@ name: Build ThornedLibrary
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+      - library 
   pull_request:
     branches: [ main ]
 
