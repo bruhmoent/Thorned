@@ -71,3 +71,9 @@ jobs:
 
           Write-Host "Files in destination directories:"
           Get-ChildItem -Path "${{ github.workspace }}\bin\Debug" -Recurse
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ThorneLib-Debug
+          path: ${{ github.workspace }}/bin/Debug/**/*
