@@ -1,4 +1,5 @@
 #include "label.hpp"
+using namespace thd;
 
 Label::Label(const std::string& identifier, const sf::Font& font, const std::string& text,
 	unsigned font_size, sf::Color color)

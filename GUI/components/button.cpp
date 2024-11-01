@@ -1,4 +1,5 @@
 #include "button.hpp"
+using namespace thd;
 
 Button::Button(const std::string& identifier, const sf::Vector2f& position, const sf::Vector2f& size,
 	const sf::Color& color, const sf::Color& hover_color, const sf::Color& click_color,

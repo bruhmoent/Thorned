@@ -3,6 +3,9 @@
 
 #include "../../component.hpp"
 
+namespace thd
+{
+
 class InputField : public Component {
 public:
 	InputField(const std::string& identifier, const sf::Vector2f& position, const sf::Vector2f& size,
@@ -73,4 +76,5 @@ private:
 	const float m_screen_size_y = 0.f;
 };
 
+} // namespace thd
 #endif // INPUT_FIELD_HPP

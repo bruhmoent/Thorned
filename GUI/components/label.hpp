@@ -3,6 +3,9 @@
 
 #include "../component.hpp"
 
+namespace thd
+{
+
 class Label : public Component {
 public:
 	Label(const std::string& identifier, const sf::Font& font, const std::string& text,
@@ -25,4 +28,5 @@ private:
 	sf::Vector2f m_size;
 };
 
+} // namespace thd
 #endif // LABEL_HPP

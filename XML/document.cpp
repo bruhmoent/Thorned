@@ -6,6 +6,7 @@
 #include "../GUI/components/form/input_field.hpp"
 #include <sstream>
 #include <iostream>
+using namespace thd;
 
 Document::Document(const char* filename, const float& screen_size_x, const float& screen_size_y, const std::string& font_path) : m_filename(filename), m_root(nullptr), m_screen_size_x(screen_size_x), m_screen_size_y(screen_size_y){
 	m_document = std::make_unique<tinyxml2::XMLDocument>();

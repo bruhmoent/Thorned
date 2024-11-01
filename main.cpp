@@ -4,14 +4,14 @@
 constexpr float SCREEN_WIDTH = 1080.0f;
 constexpr float SCREEN_HEIGHT = 720.0f;
 
-std::shared_ptr<Component> find_component_recursive(const std::shared_ptr<Container>& container, const std::string& id) {
+std::shared_ptr<thd::Component> find_component_recursive(const std::shared_ptr<thd::Container>& container, const std::string& id) {
 	auto component = container->get_component(id);
 	if (component) {
 		return component;
 	}
 
 	for (const auto& sub_component : container->get_components()) {
-		auto sub_container = std::dynamic_pointer_cast<Container>(sub_component);
+		auto sub_container = std::dynamic_pointer_cast<thd::Container>(sub_component);
 		if (sub_container) {
 			component = find_component_recursive(sub_container, id);
 			if (component) {
@@ -31,7 +31,7 @@ int main() {
 
 	window->setFramerateLimit(60);
 	 
-	Document doc("Assets/example/page.xml", SCREEN_WIDTH, SCREEN_HEIGHT, "Assets/hHachimaki.ttf");
+	thd::Document doc("Assets/example/page.xml", SCREEN_WIDTH, SCREEN_HEIGHT, "Assets/hHachimaki.ttf");
 	doc.load("Assets/example/page.xml");
 
 	auto main_container = doc.get_main_container();
