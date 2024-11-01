@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <container alignment="vertical" x="10" y="10" width="SCREEN_SIZE_X" height="SCREEN_SIZE_Y" anchorPoint="TopLeft">
+        <container alignment="horizontal" fit="fit" width="100%" height="10%" anchorPoint="TopCenter" color="245,245,245,255">
+            <button 
+                label="Super Marian" 
+                color="60,100,150,255"
+                hoverColor="70,120,170,255"
+                clickColor="30,80,130,255"
+                fontSize="22"
+                anchorPoint="Center"
+            />
+            <button 
+                label="Open" 
+                color="50,100,150,255"
+                hoverColor="70,120,170,255"
+                clickColor="30,80,130,255"
+                fontSize="22"
+                anchorPoint="Center"
+            />
+            <button 
+                label="Save" 
+                color="50,100,150,255"
+                hoverColor="70,120,170,255"
+                clickColor="30,80,130,255"
+                fontSize="22"
+                anchorPoint="Center"
+            />
+            <container alignment="horizontal" fit="fit" anchorPoint="CenterRight" color="0,0,0,125">
+                <button 
+                    label="User: " 
+                    color="120,120,120,255"
+                    hoverColor="140,140,140,255"
+                    clickColor="100,100,100,255"
+                    fontSize="18"
+                    anchorPoint="Center"
+                />
+                <label 
+                    text="John" 
+                    fontSize="16" 
+                    color="255,255,255,125"
+                    anchorPoint="Center"
+                />
+            </container>
+        </container>
+
+        <container alignment="horizontal" width="100%" height="90%" anchorPoint="Center">
+            <container alignment="vertical" width="25%" height="100%" anchorPoint="CenterLeft" color="200,55,0,255">
+                <button 
+                    label="Dashboard" 
+                    width="100%" 
+                    height="10%"
+                    color="70,70,70,255"
+                    hoverColor="90,90,90,255"
+                    clickColor="50,50,50,255"
+                    fontSize="24"
+                    anchorPoint="Center"
+                />
+                <button 
+                    label="Projects" 
+                    width="100%" 
+                    height="10%"
+                    color="70,70,70,255"
+                    hoverColor="90,90,90,255"
+                    clickColor="50,50,50,255"
+                    fontSize="24"
+                    anchorPoint="Center"
+                />
+                <button 
+                    label="Tasks" 
+                    width="100%" 
+                    height="10%"
+                    color="70,70,70,255"
+                    hoverColor="90,90,90,255"
+                    clickColor="50,50,50,255"
+                    fontSize="24"
+                    anchorPoint="Center"
+                />
+                <button 
+                    label="Reports" 
+                    width="100%" 
+                    height="10%"
+                    color="70,70,70,255"
+                    hoverColor="90,90,90,255"
+                    clickColor="50,50,50,255"
+                    fontSize="24"
+                    anchorPoint="Center"
+                />
+                <button 
+                    label="Settings" 
+                    width="100%" 
+                    height="10%"
+                    color="70,70,70,255"
+                    hoverColor="90,90,90,255"
+                    clickColor="50,50,50,255"
+                    fontSize="24"
+                    anchorPoint="Center"
+                />
+            </container>
+            
+            <container alignment="vertical" fit="fit" width="75%" height="100%" anchorPoint="CenterRight">
+                <container alignment="horizontal" fit="fit" anchorPoint="TopCenter" color="30,200,25,255">
+                    <label 
+                        text="Project Overview" 
+                        fontSize="28" 
+                        color="255,255,255,125"
+                        anchorPoint="Center"
+                    />
+                    <button 
+                        label="Create New Project" 
+                        color="76,175,80,255"
+                        hoverColor="96,195,100,255"
+                        clickColor="56,155,60,255"
+                        fontSize="24"
+                        anchorPoint="CenterRight"
+                    />
+                </container>
+                
+                <container alignment="horizontal" fit="fit" anchorPoint="TopCenter">
+                    <container alignment="vertical" fit="fit" anchorPoint="CenterLeft">
+                        <button 
+                            label="Import Data" 
+                            color="33,150,243,255"
+                            hoverColor="53,170,255,255"
+                            clickColor="13,130,223,255"
+                            fontSize="24"
+                            anchorPoint="Center"
+                        />
+                    </container>
+                    
+                    <container alignment="vertical" fit="fit" anchorPoint="CenterRight" color="0,0,0,125">
+                        <label 
+                            id="output"
+                            text="Name:" 
+                            fontSize="24" 
+                            color="255,255,255,125"
+                            anchorPoint="Center"
+                        />
+                        <inputField
+                            id="name"
+                            fontSize="24"
+                            color="255,255,255,255"
+                            textColor="0,0,0,225"
+                            cursorColor="0,0,0,225"
+                            placeholderText="Input..."
+                        />
+                        <button 
+                            label="Export Report" 
+                            color="156,39,176,255"
+                            hoverColor="176,59,196,255"
+                            clickColor="136,19,156,255"
+                            fontSize="24"
+                            anchorPoint="Center"
+                        />
+                        <button 
+                            label="Delete Report" 
+                            color="13,130,213,255"
+                            hoverColor="33,150,255,255"
+                            clickColor="3,130,223,255"
+                            fontSize="24"
+                            anchorPoint="Center"
+                        />
+                    </container>
+                </container>
+            </container>
+        </container>
+    </container>
+</root>
