@@ -1,4 +1,5 @@
 #include "image.hpp"
+using namespace thd;
 
 Image::Image(const std::string& identifier, const std::string& path, int width, int height)
 	: Component(identifier), m_width(width), m_height(height)

@@ -5,6 +5,9 @@
 #include <string>
 #include <memory>
 
+namespace thd
+{ 
+
 enum AnchorPoint {
 	TopLeft,
 	TopCenter,
@@ -32,6 +35,8 @@ public:
 	virtual sf::Vector2f get_size() const = 0;
 
 	virtual std::shared_ptr<sf::Text> get_label() const { return nullptr; }
+
+	// Sets the label's string
 	virtual void set_label_text(const std::string& text) {}
 	std::string get_identifier() const { return m_identifier; }
 
@@ -42,4 +47,5 @@ protected:
 	std::string m_identifier = "";
 };
 
+} // namespace thd
 #endif // COMPONENT_HPP

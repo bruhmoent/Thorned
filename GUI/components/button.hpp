@@ -5,6 +5,9 @@
 #include "../component.hpp"
 #include <functional>
 
+namespace thd
+{
+
 class Button : public Component {
 public:
 	Button(const std::string& identifier, const sf::Vector2f& position, const sf::Vector2f& size,
@@ -19,6 +22,8 @@ public:
 	void set_size(const sf::Vector2f& size) override;
 	sf::Vector2f get_position() const override;
 	sf::Vector2f get_size() const override;
+
+	// Sets the label's string
 	void set_label(const std::string& label_text);
 private:
 	sf::Color m_color;
@@ -33,4 +38,5 @@ private:
 	std::shared_ptr<sf::RectangleShape> m_shape;
 };
 
+} // namespace thd
 #endif // BUTTON_HPP

@@ -3,6 +3,9 @@
 
 #include "../component.hpp"
 
+namespace thd
+{
+
 class Image : public Component {
 public:
 	Image(const std::string& identifier, const std::string& path, int width, int height);
@@ -24,4 +27,5 @@ private:
 	sf::Vector2f m_position;
 };
 
+} // namespace thd
 #endif // IMAGE_HPP

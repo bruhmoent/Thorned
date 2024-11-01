@@ -1,5 +1,6 @@
 #include "input_field.hpp"
 #include <iostream>
+using namespace thd;
 
 InputField::InputField(const std::string& identifier, const sf::Vector2f& position, const sf::Vector2f& size,
 	const sf::Font& font, unsigned font_size, const sf::Color& color,

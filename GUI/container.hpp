@@ -4,6 +4,9 @@
 #include "component.hpp"
 #include <list>
 
+namespace thd
+{
+
 enum AlignmentType {
 	Vertical,
 	Horizontal
@@ -20,6 +23,7 @@ public:
 		const sf::Vector2f& position = sf::Vector2f(0.0f, 0.0f),
 		const sf::Vector2f& size = sf::Vector2f(0.0f, 0.0f), const sf::Color& color = sf::Color::White);
 
+	// Automatically arranges the children components based on the alignment type
 	void arrange_children();
 
 	void update(float dt, const sf::RenderWindow& window) override;
@@ -40,11 +44,12 @@ public:
 	std::shared_ptr<Component> get_component(const std::string& identifier) const;
 private:
 	AlignmentType m_alignment_type;
-	FitType m_fit_type;
+	FitType m_fit_type; // Determines if the container should fit its children or not
 	std::list<std::shared_ptr<Component>> m_components;
 	sf::Vector2f m_position;
 	sf::Vector2f m_size;
 	std::shared_ptr<sf::RectangleShape> m_shape;
 };
 
+} // namespace thd
 #endif // CONTAINER_HPP

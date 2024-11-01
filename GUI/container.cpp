@@ -1,5 +1,6 @@
 #include "container.hpp"
 #include <random>
+using namespace thd;
 
 Container::Container(AlignmentType alignment_type, FitType fit_type,
 	const sf::Vector2f& position, const sf::Vector2f& size, const sf::Color& color)

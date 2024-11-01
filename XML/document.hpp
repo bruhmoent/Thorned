@@ -4,6 +4,9 @@
 #include "../GUI/container.hpp"
 #include "tinyxml2.h"
 
+namespace thd
+{
+
 class Document {
 public:
 	Document(const char* filename, const float& screen_size_x, const float& screen_size_y, const std::string& font_path);
@@ -31,4 +34,5 @@ private:
 	const char* m_filename;
 };
 
+} // namespace thd
 #endif // DOCUMENT_HPP
