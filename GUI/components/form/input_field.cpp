@@ -46,7 +46,7 @@ void InputField::render(sf::RenderTarget& target) {
 		target.draw(m_cursor);
 	}
 
-   target.setView(original_view);
+	target.setView(original_view);
 }
 
 std::shared_ptr<sf::Text> InputField::get_label() const
@@ -93,7 +93,8 @@ void InputField::handle_mouse_press(const sf::Event& event, sf::RenderWindow& wi
 
 	if (m_is_focused) {
 		const float click_x = world_pos.x - m_shape->getPosition().x;
-		m_cursor_position = calculate_cursor_position_from_x(click_x);
+
+		m_cursor_position = calculate_cursor_position_from_x(click_x, window);
 		update_cursor_position();
 	}
 }
@@ -163,17 +164,20 @@ void InputField::handle_key_press(const sf::Event& event) {
 	}
 }
 
-unsigned InputField::calculate_cursor_position_from_x(const float& click_x) {
+unsigned InputField::calculate_cursor_position_from_x(const float& click_x, const sf::RenderWindow& window) {
+	sf::Vector2f world_pos = window.mapPixelToCoords(sf::Vector2i(static_cast<int>(click_x), 0), m_view);
+
 	sf::Text temp_text;
 	temp_text.setFont(m_font);
 	temp_text.setCharacterSize(m_font_size);
 
 	for (size_t i = 0; i <= m_text_string.length(); ++i) {
 		temp_text.setString(m_text_string.substr(0, i));
-		if (temp_text.getGlobalBounds().width >= click_x) {
-			return static_cast<unsigned>(i);
+		if (temp_text.getGlobalBounds().width >= world_pos.x) {
+			return static_cast<unsigned>(i - 1);
 		}
 	}
+
 	return static_cast<unsigned>(m_text_string.length());
 }
 

@@ -30,7 +30,7 @@ int main() {
 	);
 
 	window->setFramerateLimit(60);
-	 
+
 	thd::Document doc("Assets/example/page.xml", SCREEN_WIDTH, SCREEN_HEIGHT, "Assets/hHachimaki.ttf");
 	doc.load("Assets/example/page.xml");
 
@@ -43,7 +43,9 @@ int main() {
 	auto name_input = find_component_recursive(main_container, "name");
 	auto output = find_component_recursive(main_container, "output");
 
+	sf::Clock clock;
 	while (window->isOpen()) {
+		sf::Time dt = clock.restart();
 		sf::Event event;
 		while (window->pollEvent(event)) {
 			if (event.type == sf::Event::Closed) {
@@ -52,12 +54,15 @@ int main() {
 
 			for (const auto& component : main_container->get_components()) {
 				component->handle_event(event, *window);
-			}   
+			}
 		}
 
-		output->set_label_text(name_input->get_label()->getString().toAnsiString());
+		if (output && name_input) {
+			output->set_label_text(name_input->get_label()->getString().toAnsiString());
+		}
+
 		for (const auto& component : main_container->get_components()) {
-			component->update(0.f, *window);
+			component->update(dt.asSeconds(), *window);
 		}
 
 		window->clear(sf::Color(30, 30, 30));

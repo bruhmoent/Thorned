@@ -113,10 +113,19 @@ void Container::arrange_children() {
 				component_x = m_position.x;
 				break;
 			}
-			component->set_position(sf::Vector2f(component_x, component_y));
-			if (m_fit_type == FitType::Fit) {
-				component->set_size(size);
+
+			sf::Vector2f current_position = component->get_position();
+
+			if (current_position != sf::Vector2f(component_x, component_y)) {
+				component->set_position(sf::Vector2f(component_x, component_y));
 			}
+
+			if (m_fit_type == FitType::Fit) {
+				if (component->get_size() != size) {
+					component->set_size(size);
+				}
+			}
+
 			current_y += size.y;
 		}
 	}
@@ -148,10 +157,19 @@ void Container::arrange_children() {
 				component_y = m_position.y;
 				break;
 			}
-			component->set_position(sf::Vector2f(component_x, component_y));
-			if (m_fit_type == FitType::Fit) {
-				component->set_size(size);
+
+			sf::Vector2f current_position = component->get_position();
+
+			if (current_position != sf::Vector2f(component_x, component_y)) {
+				component->set_position(sf::Vector2f(component_x, component_y));
 			}
+
+			if (m_fit_type == FitType::Fit) {
+				if (component->get_size() != size) {
+					component->set_size(size);
+				}
+			}
+
 			current_x += size.x;
 		}
 	}

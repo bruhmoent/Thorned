@@ -76,14 +76,14 @@
                     fontSize="24"
                     anchorPoint="Center"
                 />
-                <button 
-                    label="Reports" 
-                    width="100%" 
-                    height="10%"
+               <textScroll 
+                    id="ScrollableText2" 
                     color="70,70,70,255"
-                    hoverColor="90,90,90,255"
-                    clickColor="50,50,50,255"
+                    textColor="255,255,255,255"
+                    width="100%"
+                    height="10%"
                     fontSize="24"
+                    path="Assets/example/text.txt"
                     anchorPoint="Center"
                 />
                 <button 
@@ -118,12 +118,12 @@
                 
                 <container alignment="horizontal" fit="fit" anchorPoint="TopCenter">
                     <container alignment="vertical" fit="fit" anchorPoint="CenterLeft">
-                        <button 
-                            label="Import Data" 
-                            color="33,150,243,255"
-                            hoverColor="53,170,255,255"
-                            clickColor="13,130,223,255"
+                        <textScroll 
+                            id="ScrollableText" 
+                            color="70,70,70,255"
+                            textColor="255,255,255,255"
                             fontSize="24"
+                            path="Assets/example/text.txt"
                             anchorPoint="Center"
                         />
                     </container>

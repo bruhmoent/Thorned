@@ -1,9 +1,12 @@
 #include "document.hpp"
+
 #include "../GUI/container.hpp"
 #include "../GUI/components/button.hpp"
 #include "../GUI/components/image.hpp"
 #include "../GUI/components/label.hpp"
 #include "../GUI/components/form/input_field.hpp"
+#include "../GUI/components/text_scroll.hpp"
+
 #include <sstream>
 #include <iostream>
 using namespace thd;
@@ -219,6 +222,49 @@ std::shared_ptr<Component> Document::create_element(const std::string& tag,
 			parent_container->add_component(input_field);
 		}
 		return input_field;
+	}
+	else if (tag == "textScroll") {
+		const char* identifier = element->Attribute("id");
+		if (!identifier) identifier = "textScroll";
+
+		const sf::Vector2f position = parse_position(element);
+		sf::Vector2f size;
+
+		const bool is_fit_container = parent_container && parent_container->get_fit_type() == FitType::Fit;
+
+		if (!is_fit_container) {
+			size = parse_size(element, parent_size);
+		}
+		else {
+			size = sf::Vector2f(0, 0);
+		}
+
+		const unsigned font_size = static_cast<unsigned>(element->IntAttribute("fontSize", 24));
+		const sf::Color background_color = parse_color(element, "color");
+		const sf::Color font_color = parse_color(element, "textColor");
+		const std::string initial_text = element->Attribute("text") ? element->Attribute("text") : "";
+		const std::string path = element->Attribute("path") ? element->Attribute("path") : "none";
+
+		auto text_scroll = std::make_shared<TextScroll>(
+			identifier,
+			initial_text,
+			m_font,
+			position,
+			size,
+			background_color,
+			font_color,
+			font_size,
+			m_screen_size_x,
+			m_screen_size_y,
+			path,
+			is_fit_container
+		);
+
+		if (parent_container) {
+			parent_container->add_component(text_scroll);
+		}
+
+		return text_scroll;
 		}
 
 	return nullptr;

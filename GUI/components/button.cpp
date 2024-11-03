@@ -14,8 +14,8 @@ Button::Button(const std::string& identifier, const sf::Vector2f& position, cons
 	m_text->setFillColor(sf::Color::White);
 
 	const sf::FloatRect label_bounds = m_text->getLocalBounds();
-	m_text->setOrigin(label_bounds.width / 2, label_bounds.top + label_bounds.height / 2);
-	m_text->setPosition(position.x + size.x / 2, position.y + size.y / 2);
+	m_text->setOrigin(label_bounds.width / 2.f, label_bounds.top + label_bounds.height / 2.f);
+	m_text->setPosition(position.x + size.x / 2.f, position.y + size.y / 2.f);
 }
 
 void Button::update(float dt, const sf::RenderWindow& window)

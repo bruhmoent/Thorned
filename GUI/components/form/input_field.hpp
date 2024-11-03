@@ -44,7 +44,7 @@ public:
 	void handle_mouse_press(const sf::Event& event, sf::RenderWindow& window);
 	void handle_text_input(const sf::Event& event);
 	void handle_key_press(const sf::Event& event);
-	unsigned calculate_cursor_position_from_x(const float& click_x);
+	unsigned calculate_cursor_position_from_x(const float& click_x, const sf::RenderWindow& window);
 	unsigned find_previous_word();
 	unsigned find_next_word();
 private:
